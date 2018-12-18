@@ -8,14 +8,11 @@ import "../node_modules/materialize-css/dist/js/materialize.min.js";
 import "./js/initMaterialize"
 import * as serviceWorker from "./serviceWorker";
 import configureStore from "./store/configureStore";
-import { loadUsers } from "./actions/usersActions";
 import { Provider } from "react-redux";
 import initialState from "./reducers/initialState";
 import "./style/style.css";
 
 const store = configureStore(initialState);
-
-store.dispatch(loadUsers());
 
 ReactDOM.render(
   <Provider store={store}>

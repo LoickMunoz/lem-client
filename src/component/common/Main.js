@@ -4,14 +4,17 @@ import UsersPage from "../users/UsersPage";
 import UserDetailPage from "../users/UserDetailPage";
 import UserCreatePage from "../users/UserCreatePage";
 import HomePage from "../home/HomePage";
+import LoginPage from "../login/LoginPage";
+import requireAuth from "../utils/requireAuth"
 
 const Main = () => (
   <div>
     <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route path="/users" component={UsersPage} />
-      <Route path="/user/:id" component={UserDetailPage} />
-      <Route path="/user" component={UserCreatePage} />
+      <Route exact path="/" component={requireAuth(HomePage)} />
+      <Route path="/users" component={requireAuth(UsersPage)} />
+      <Route path="/user/:id" component={requireAuth(UserDetailPage)} />
+      <Route path="/user" component={requireAuth(UserCreatePage)} />
+      <Route path="/login" component={LoginPage} />
     </Switch>
   </div>
 );

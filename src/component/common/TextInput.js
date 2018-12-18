@@ -10,6 +10,7 @@ const TextInput = ({ name, label, onChange, placeholder, value, error, type="tex
         value={value}
         onChange={onChange}
       />
+      {error && <span className="red-text">{error}</span>}
       <label className="active" for={name}>{label}</label>
     </div>
   );

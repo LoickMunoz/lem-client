@@ -17,7 +17,7 @@ class UsersPage extends Component {
   }
 
   componentWillMount() {
-    //this.props.actions.loadUsers();
+    this.props.actions.loadUsers();
   }
 
   render() {
