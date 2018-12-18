@@ -24,12 +24,6 @@ export function deleteUserSuccess(user) {
 // These are used by redux-thunk to support asynchronous interactions.
 export function loadUsers() {
   return function(dispatch, getState) {
-
-    const token = getState().auth.token;
-    const config = constructHeader(token);
-
-    debugger;
-
     dispatch(beginAjaxCall());
     return axios
       .get(API_URL+"/user",constructHeader(getState().auth.token))
