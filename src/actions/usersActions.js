@@ -31,6 +31,7 @@ export function loadUsers() {
         dispatch(loadUsersSuccess(users.data));
       })
       .catch(error => {
+        dispatch(ajaxCallError());
         throw error.data;
       });
   };
@@ -45,6 +46,7 @@ export function saveUser(user) {
         dispatch(createUserSuccess(user.data));
       })
       .catch(error => {
+        dispatch(ajaxCallError());
         throw error;
       });
   };
@@ -59,6 +61,7 @@ export function updateUser(user) {
         dispatch(updateUserSuccess(user.data));
       })
       .catch(error => {
+        dispatch(ajaxCallError());
         throw error;
       });
   };
@@ -73,6 +76,7 @@ export function deleteUser(user) {
         dispatch(deleteUserSuccess(user.data));
       })
       .catch(error => {
+        dispatch(ajaxCallError());
         throw error;
       });
   };

@@ -4,11 +4,11 @@ import { API_URL } from "../config";
 import axios from "axios";
 
 export function loginSuccess(token, user) {
-  return { type: types.LOGIN_SUCESS, token, user };
+  return { type: types.LOGIN_SUCCESS, token, user };
 }
 
 export function logoutSuccess() {
-  return { type: types.LOGOUT_SUCESS };
+  return { type: types.LOGOUT_SUCCESS };
 }
 
 export function login(user) {

@@ -8,13 +8,16 @@ import initialState from "./initialState";
 // and update values on the copy.
 export default function auth(state = initialState.auth, action) {
   switch (action.type) {
-    case types.LOGIN_SUCESS:
-      let newState = Object.assign({}, state);
-      newState.isAuthenticated = true;
-      newState.user = action.user;
-      newState.token = action.token;
-      return newState;
-
+    case types.LOGIN_SUCCESS:
+      return {
+        ...state,
+        auth : {
+          ...state.auth,
+          isAuthenticated = true,
+          user = action.user,
+          token = action.token
+        }
+      }
     default:
       return state;
   }
