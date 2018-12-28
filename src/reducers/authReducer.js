@@ -11,12 +11,16 @@ export default function auth(state = initialState.auth, action) {
     case types.LOGIN_SUCCESS:
       return {
         ...state,
-        auth : {
-          ...state.auth,
-          isAuthenticated = true,
-          user = action.user,
-          token = action.token
-        }
+        isAuthenticated: true,
+        user: action.user,
+        token: action.token
+      };
+    case types.LOGOUT_OK:
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+        token: null
       }
     default:
       return state;

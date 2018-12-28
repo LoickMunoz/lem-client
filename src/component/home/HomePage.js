@@ -1,19 +1,24 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class HomePage extends Component {
-
-    componentWillMount(){
-        
-    };
-
-
   render() {
-    return (
-        <div>
-        Home page
-        </div>
-    );
+    return <RenderHomePage user={this.props.user} />;
   }
 }
 
-export default HomePage;
+function RenderHomePage(props) {
+  if (props.user) {
+    return <div>Hello {props.user.firstname}</div>;
+  } else {
+    return null;
+  }
+}
+
+function mapStateToProps(state, ownProps) {
+  return {
+    user: state.auth.user
+  };
+}
+
+export default connect(mapStateToProps)(HomePage);

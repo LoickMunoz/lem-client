@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { FaUserEdit, FaTrash } from "react-icons/fa";
 import ReactTooltip from "react-tooltip";
 
-const UsersListRow = ({ user, deleteUser }) => {
+const UsersListRow = ({ user, deleteUser, index }) => {
   return (
     <tr>
+      <td>{index}</td>
+      <td>{user.type_name}</td>
       <td>{user.firstname}</td>
       <td>{user.lastname}</td>
       <td>{user.email}</td>

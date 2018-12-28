@@ -27,3 +27,28 @@ export default function users(state = initialState.users, action) {
       return state;
   }
 }
+
+export const getCompleteNameById = (users, id) => {
+  const userFound = users.filter(user => user._id === id);
+  if (userFound.length > 0) {
+    return userFound[0].firstname + " " + userFound[0].lastname;
+  } else {
+    return null;
+  }
+};
+
+export const formatUsersForSelect = (users, type = 0) => {
+  let usersFiltered;
+  if (type > 0) {
+    usersFiltered = users.filter(user => user.type === type);
+  } else {
+    usersFiltered = users;
+  }
+
+  return usersFiltered.map(user => {
+    return {
+      code: user._id,
+      text: user.firstname + " " + user.lastname
+    };
+  });
+};

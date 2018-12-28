@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 export default function(ComposedComponent) {
+  
   class Authentificate extends React.Component {
     componentWillMount() {
       if (!this.props.isAuthenticated) {

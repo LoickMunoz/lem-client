@@ -8,7 +8,7 @@ export function loginSuccess(token, user) {
 }
 
 export function logoutSuccess() {
-  return { type: types.LOGOUT_SUCCESS };
+  return { type: types.LOGOUT_OK };
 }
 
 export function login(user) {
@@ -25,5 +25,13 @@ export function login(user) {
         dispatch(ajaxCallError());
         throw error.response.data;
       });
+  };
+}
+
+export function logout() {
+  return function(dispatch) {
+    return new Promise(resolve => {
+      resolve(dispatch(logoutSuccess()));
+    });
   };
 }

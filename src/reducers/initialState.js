@@ -1,8 +1,9 @@
 export default {
   users: [],
+  donations:[],
   ajaxCallsInProgress: 0,
   auth: {
-    isAuthenticated: 0,
+    isAuthenticated: false,
     token: "",
     user: {}
   }

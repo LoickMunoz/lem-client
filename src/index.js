@@ -5,20 +5,22 @@ import "./index.css";
 import App from "./component/App";
 import "../node_modules/materialize-css/dist/css/materialize.min.css";
 import "../node_modules/materialize-css/dist/js/materialize.min.js";
-import "./js/initMaterialize"
+import "./js/initMaterialize";
 import * as serviceWorker from "./serviceWorker";
-import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
-import initialState from "./reducers/initialState";
 import "./style/style.css";
+import getStore from "./store/configureStore";
+import { PersistGate } from "redux-persist/integration/react";
 
-const store = configureStore(initialState);
+const { store, persistor } = getStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );

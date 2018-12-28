@@ -5,7 +5,7 @@ import * as usersActions from "../../actions/usersActions";
 import UserFormCreate from "./UserFormCreate";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-export class UserDetailPage extends React.Component {
+export class UserCreatePage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -101,4 +101,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserDetailPage);
+)(UserCreatePage);

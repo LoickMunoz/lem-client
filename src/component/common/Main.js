@@ -4,8 +4,10 @@ import UsersPage from "../users/UsersPage";
 import UserDetailPage from "../users/UserDetailPage";
 import UserCreatePage from "../users/UserCreatePage";
 import HomePage from "../home/HomePage";
+import DonationPage from "../donation/DonationPage";
 import LoginPage from "../login/LoginPage";
-import requireAuth from "../utils/requireAuth"
+import requireAuth from "../utils/requireAuth";
+import DonationDetailPage from "../donation/DonationDetailPage";
 
 const Main = () => (
   <div>
@@ -15,6 +17,9 @@ const Main = () => (
       <Route path="/user/:id" component={requireAuth(UserDetailPage)} />
       <Route path="/user" component={requireAuth(UserCreatePage)} />
       <Route path="/login" component={LoginPage} />
+      <Route path="/donations" component={requireAuth(DonationPage)} />
+      <Route path="/donation/:id" component={requireAuth(DonationDetailPage)} />
+      <Route path="/donation" component={requireAuth(DonationDetailPage)} />
     </Switch>
   </div>
 );

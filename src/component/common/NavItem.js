@@ -1,21 +1,23 @@
-import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 
 class NavItem extends Component {
-  render () {
-    const { index, to, children, ...props } = this.props
+  render() {
+    const { index, to, children, ...props } = this.props;
 
-    let isActive
-    isActive = this.props.location.pathname === to
+    let isActive;
+    isActive = this.props.location.pathname === to;
 
     return (
-      <li className={isActive ? 'active' : ''}>
-        <Link to={to} {...props}>{children}</Link>
+      <li className={isActive ? "active" : ""}>
+        <Link to={to} {...props}>
+          {children}
+        </Link>
       </li>
-    )
+    );
   }
 }
 
-NavItem = withRouter(NavItem)
+NavItem = withRouter(NavItem);
 
-export default NavItem
+export default NavItem;
