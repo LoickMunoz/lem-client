@@ -1,4 +1,4 @@
-export const API_URL = "http://localhost:3001";
+export const API_URL = "http://35.180.208.138:3001";
 
 export function constructHeader(token) {
   return {
