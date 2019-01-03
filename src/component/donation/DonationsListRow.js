@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaUserEdit, FaTrash } from "react-icons/fa";
 import ReactTooltip from "react-tooltip";
 
-const DonationsListRow = ({ donation, index }) => {
+const DonationsListRow = ({ donation, index, deleteDonation }) => {
   return (
     <tr>
       <td>{index}</td>
@@ -20,6 +20,15 @@ const DonationsListRow = ({ donation, index }) => {
           />
         </Link>
         <ReactTooltip />
+      </td>
+      <td>
+        <FaTrash
+          onClick={() => deleteDonation(donation)}
+          size="2em"
+          style={{ cursor: "pointer" }}
+          color="blue"
+          data-tip="delete"
+        />
       </td>
     </tr>
   );

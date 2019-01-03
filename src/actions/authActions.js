@@ -2,6 +2,7 @@ import * as types from "./actionTypes";
 import { beginAjaxCall, ajaxCallError } from "./ajaxStatusActions";
 import { API_URL } from "../config";
 import axios from "axios";
+import { addError } from "./errorsActions";
 
 export function loginSuccess(token, user) {
   return { type: types.LOGIN_SUCCESS, token, user };
@@ -23,7 +24,8 @@ export function login(user) {
       })
       .catch(error => {
         dispatch(ajaxCallError());
-        throw error.response.data;
+        dispatch(addError(error.response.data.message));
+        throw error.response.data.message;
       });
   };
 }

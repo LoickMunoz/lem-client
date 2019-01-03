@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./common/Header";
 import Main from "./common/Main";
+import ErrorList from "./common/ErrorList"
 
 class App extends Component {
   render() {
@@ -8,6 +9,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="container">
+          <ErrorList />
           <Main />
         </div>
       </div>

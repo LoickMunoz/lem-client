@@ -55,11 +55,6 @@ export class LoginPage extends React.Component {
     this.props.actions
       .login(this.state.user)
       .then(() => this.redirect("/"))
-      .catch(error => {
-        if (error.message) {
-          alert(error.message);
-        }
-      });
   }
 
   redirect() {
@@ -68,13 +63,15 @@ export class LoginPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="login-page">
+       <div className="login-form">
         <LoginForm
           user={this.state.user}
           onChange={this.updateUserState}
           login={this.login}
           errors={this.state.errors}
         />
+        </div>
       </div>
     );
   }

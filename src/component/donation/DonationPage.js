@@ -6,17 +6,17 @@ import * as donationsActions from "../../actions/donationsActions";
 import DonationsList from "./DonationsList";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { getCompleteNameById } from '../../reducers'
+import { getCompleteNameById } from "../../reducers";
 
 class DonationPage extends Component {
-  constructor(props, context) {
-    super(props, context);
-  }
-
   componentWillMount() {
     this.props.actionsUsers.loadUsers();
     this.props.actionsDonations.loadDonations();
   }
+
+  deleteDonationByID = donation => {
+    this.props.actionsDonations.deleteDonation(donation);
+  };
 
   render() {
     return (
@@ -25,7 +25,10 @@ class DonationPage extends Component {
         <Link to={"/donation"}>
           <button className="waves-effect waves-light btn">Add donation</button>
         </Link>
-        <DonationsList donations={this.props.donations} />
+        <DonationsList
+          donations={this.props.donations}
+          deleteDonation={this.deleteDonationByID}
+        />
       </div>
     );
   }
@@ -34,7 +37,7 @@ class DonationPage extends Component {
 function formatDonation(state) {
   const donationsWithUser = state.donations.map(donation => {
     let name = getCompleteNameById(state, donation._idUser);
-    let date = moment(donation.date).format("D MMM YYYY - hh:mm");
+    let date = moment(donation.date).format("D MMM YYYY");
     return {
       _id: donation._id,
       name: name,

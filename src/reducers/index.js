@@ -2,13 +2,15 @@ import { combineReducers } from "redux";
 import users, * as fromUser from "./usersReducer";
 import ajaxCallsInProgress from "./ajaxStatusReducer";
 import donations, * as fromDonation from "./donationsReducer";
+import errors from "./errorsReducer";
 import auth from "./authReducer";
 
 const rootReducer = combineReducers({
   users,
   ajaxCallsInProgress,
   auth,
-  donations
+  donations,
+  errors
 });
 
 export const getDonationById = (state, id) =>

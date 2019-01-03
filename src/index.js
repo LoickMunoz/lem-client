@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import "./style/style.css";
 import getStore from "./store/configureStore";
 import { PersistGate } from "redux-persist/integration/react";
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
 const { store, persistor } = getStore();
 

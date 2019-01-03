@@ -5,6 +5,7 @@ import * as donationsActions from "../../actions/donationsActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 import DonationForm from "./DonationForm";
 import { getDonationById, formatUsersForSelect } from "../../reducers";
+import moment from 'moment'
 
 export class DonationDetailPage extends React.Component {
   constructor(props, context) {
@@ -15,9 +16,6 @@ export class DonationDetailPage extends React.Component {
       errors: {},
       saving: false
     };
-
-    this.updateDonationState = this.updateDonationState.bind(this);
-    this.saveDonation = this.saveDonation.bind(this);
   }
   componentDidMount() {
     M.AutoInit();
@@ -33,19 +31,19 @@ export class DonationDetailPage extends React.Component {
     }
   }
 
-  updateDonationState(event) {
+  updateDonationState = (event) => {
     const field = event.target.name;
     let donation = Object.assign({}, this.state.donation);
     donation[field] = event.target.value;
     return this.setState({ donation: donation });
   }
 
-  redirect() {
+  redirect = () => {
     this.setState({ saving: false });
-    this.props.history.push("/donation");
+    this.props.history.push("/donations");
   }
 
-  saveDonation(event) {
+  saveDonation = (event) => {
     event.preventDefault();
 
     this.setState({ saving: true });
@@ -54,6 +52,7 @@ export class DonationDetailPage extends React.Component {
       .then(() => this.redirect())
       .catch(error => {
         this.setState({ saving: false });
+        console.log(error);
       });
   }
 
@@ -79,8 +78,8 @@ function mapStateToProps(state, ownProps) {
     _id: "",
     _idUser: "",
     amount: 0,
-    date: "",
-    type: 0
+    date: moment().format("YYYY-MM-DD"),
+    type: null
   };
 
   if (donationId && state.donations.length > 0) {

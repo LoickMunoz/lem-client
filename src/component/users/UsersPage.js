@@ -7,13 +7,8 @@ import { Link } from "react-router-dom";
 import { userTypes } from "../../config/data";
 
 class UsersPage extends Component {
-  constructor(props, context) {
-    super(props, context);
 
-    this.deleteUserByID = this.deleteUserByID.bind(this);
-  }
-
-  deleteUserByID(user) {
+  deleteUserByID = (user) => {
     this.props.actions.deleteUser(user);
   }
 
@@ -35,8 +30,8 @@ class UsersPage extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  const getTypeName = typeSearched => {
-    return userTypes.find(type => type.code = typeSearched).text
+  const getTypeName = (typeSearched) => {
+    return userTypes.find(type => type.code === typeSearched).text
   };
 
   const formatatedUsers = state.users.map(user => {

@@ -14,10 +14,8 @@ export class UserDetailPage extends React.Component {
       errors: {},
       saving: false
     };
-
-    this.updateUserState = this.updateUserState.bind(this);
-    this.updateUser = this.updateUser.bind(this);
   }
+  
   componentDidMount() {
     M.AutoInit();
   }
@@ -29,19 +27,19 @@ export class UserDetailPage extends React.Component {
     }
   }
 
-  updateUserState(event) {
+  updateUserState = (event) => {
     const field = event.target.name;
     let user = Object.assign({}, this.state.user);
     user[field] = event.target.value;
     return this.setState({ user: user });
   }
 
-  redirect() {
+  redirect = () => {
     this.setState({ saving: false });
     this.props.history.push("/users");
   }
 
-  updateUser(event) {
+  updateUser = (event) => {
     event.preventDefault();
     this.setState({ saving: true });
     this.props.actions

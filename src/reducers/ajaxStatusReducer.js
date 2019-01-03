@@ -12,5 +12,9 @@ export default function ajaxStatusReducer(state = initialState.ajaxCallsInProgre
     return state - 1;
   }
 
+  if (action.type === types.LOGOUT_OK){
+    return 0;
+  }
+
   return state;
 }

@@ -15,6 +15,12 @@ export default function users(state = initialState.donations, action) {
         Object.assign({}, action.donation)
       ];
 
+    case types.DELETE_DONATION_SUCCESS:
+      return state.filter(donation => donation._id !== action.donation._id);
+    
+    case types.LOGOUT_OK:
+      return [];
+
     default:
       return state;
   }
@@ -24,4 +30,4 @@ export const getDonationById = (donations, id) => {
   const donnationFound = donations.filter(donation => donation._id === id);
   if (donnationFound.length > 0) return donnationFound[0];
   return null;
-}
+};

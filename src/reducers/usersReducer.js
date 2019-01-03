@@ -23,6 +23,9 @@ export default function users(state = initialState.users, action) {
     case types.DELETE_USER_SUCCESS:
       return state.filter(user => user._id !== action.user._id);
 
+    case types.LOGOUT_OK:
+      return [];
+      
     default:
       return state;
   }

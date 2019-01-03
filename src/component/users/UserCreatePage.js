@@ -14,10 +14,8 @@ export class UserCreatePage extends React.Component {
       errors: {},
       saving: false
     };
-
-    this.updateUserState = this.updateUserState.bind(this);
-    this.saveUser = this.saveUser.bind(this);
   }
+
   componentDidMount() {
     M.AutoInit();
   }
@@ -29,28 +27,28 @@ export class UserCreatePage extends React.Component {
     }
   }
 
-  updateUserState(event) {
+  updateUserState = event => {
     const field = event.target.name;
     let user = Object.assign({}, this.state.user);
     user[field] = event.target.value;
     return this.setState({ user: user });
-  }
+  };
 
-  redirect() {
+  redirect = () => {
     this.setState({ saving: false });
-    this.props.history.push('/users');
-  }
+    this.props.history.push("/users");
+  };
 
-  saveUser(event) {
+  saveUser = event => {
     event.preventDefault();
-
-    this.setState({saving: true});
-    this.props.actions.saveUser(this.state.user)
+    this.setState({ saving: true });
+    this.props.actions
+      .saveUser(this.state.user)
       .then(() => this.redirect())
       .catch(error => {
-        this.setState({saving: false});
+        this.setState({ saving: false });
       });
-  }
+  };
 
   render() {
     return (

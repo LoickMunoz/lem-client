@@ -68,3 +68,18 @@ export function saveDonation(donation) {
     }
   };
 }
+
+export function deleteDonation(donation) {
+  return function (dispatch, getState) {
+    dispatch(beginAjaxCall());
+    return axios
+      .delete(API_URL+"/donation/"+donation._id,constructHeader(getState().auth.token))
+      .then(donation => {
+        dispatch(deleteDonationSuccess(donation.data));
+      })
+      .catch(error => {
+        dispatch(ajaxCallError());
+        throw error;
+      });
+  };
+}

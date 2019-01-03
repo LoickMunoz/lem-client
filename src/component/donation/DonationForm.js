@@ -1,6 +1,7 @@
 import React from "react";
 import TextInput from "../common/TextInput";
 import SelectInput from "../common/SelectInput";
+import { donationTypes } from '../../config/data'
 
 const DonationForm = ({ donation, users, onChange, saving, onSave }) => {
   return (
@@ -14,6 +15,22 @@ const DonationForm = ({ donation, users, onChange, saving, onSave }) => {
           onChange={onChange}
           placeholder="lastname"
           type="number"
+        />
+        <TextInput
+          name="date"
+          label="date"
+          value={donation.date}
+          onChange={onChange}
+          placeholder="date"
+          type="date"
+        />
+        <SelectInput
+            name="type"
+            label="type"
+            defaultOption="Choose a type"
+            options={donationTypes}
+            value={donation.type}
+            onChange={onChange}
         />
         <SelectInput
             name="_idUser"

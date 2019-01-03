@@ -19,8 +19,8 @@ export default function auth(state = initialState.auth, action) {
       return {
         ...state,
         isAuthenticated: false,
-        user: null,
-        token: null
+        user: {},
+        token: ""
       }
     default:
       return state;
